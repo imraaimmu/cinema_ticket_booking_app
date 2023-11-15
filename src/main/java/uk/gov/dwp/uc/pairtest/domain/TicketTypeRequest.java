@@ -1,13 +1,15 @@
 package uk.gov.dwp.uc.pairtest.domain;
 
+import uk.gov.dwp.uc.pairtest.contstant.TicketConstants;
+
 /**
  * Immutable Object
  */
 
 public class TicketTypeRequest {
 
-    private int noOfTickets;
-    private Type type;
+    private int noOfTickets;//20
+    private Type type;//ADULT
 
     public TicketTypeRequest(Type type, int noOfTickets) {
         this.type = type;
@@ -23,7 +25,19 @@ public class TicketTypeRequest {
     }
 
     public enum Type {
-        ADULT, CHILD , INFANT
+        ADULT(TicketConstants.ADULT_TICKET_PRICE), // Set the price for ADULT tickets
+        CHILD(TicketConstants.CHILD_TICKET_PRICE), // Set the price for CHILD tickets
+        INFANT(TicketConstants.INFANT_TICKET_PRICE); // Set the price for INFANT tickets
+
+        private int price;
+
+        private Type(int price) {
+            this.price = price;
+        }
+
+        public int getPrice() {
+            return price;
+        }
     }
 
 }
