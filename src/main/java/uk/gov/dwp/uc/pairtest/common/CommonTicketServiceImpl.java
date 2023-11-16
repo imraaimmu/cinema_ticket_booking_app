@@ -1,4 +1,4 @@
-package uk.gov.dwp.uc.pairtest;
+package uk.gov.dwp.uc.pairtest.common;
 
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -10,7 +10,7 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.Type;
 /**
  * BaseTicketService provides common functionality related to ticket calculations.
  */
-public class BaseTicketService {
+public class CommonTicketServiceImpl implements CommonTicketService{
 
     /**
      * Calculates the total amount for the given ticket types and their counts.

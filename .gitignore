@@ -4,3 +4,8 @@
 # Package Files #
 *.jar
 
+.classpath
+target/
+.project
+.settings
+

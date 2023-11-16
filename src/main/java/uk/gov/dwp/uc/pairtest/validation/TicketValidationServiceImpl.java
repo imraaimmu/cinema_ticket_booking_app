@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
-import uk.gov.dwp.uc.pairtest.BaseTicketService;
+import uk.gov.dwp.uc.pairtest.common.CommonTicketService;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.Type;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
@@ -22,8 +22,13 @@ import uk.gov.dwp.uc.pairtest.util.TicketUtil;
 /**
  * Implementation of {@link TicketValidationService} for validating ticket requests.
  */
-public class TicketValidationServiceImpl extends BaseTicketService implements TicketValidationService {
+public class TicketValidationServiceImpl implements TicketValidationService {
 
+	private final CommonTicketService commonTicketService;
+	
+	public TicketValidationServiceImpl(CommonTicketService commonTicketService) {
+		this.commonTicketService = commonTicketService;
+	}
 	/**
 	 * Pre-validates the ticket request.
 	 *
@@ -55,7 +60,7 @@ public class TicketValidationServiceImpl extends BaseTicketService implements Ti
 	public void validateTicketRequest(Long accountId, EnumMap<Type, Integer> ticketCountMap) throws InvalidPurchaseException {
 		List<String> errorList = new ArrayList<>();
 
-		int totalTicketCount = calculateTotalTicketCount(ticketCountMap);
+		int totalTicketCount = commonTicketService.calculateTotalTicketCount(ticketCountMap);
 
 		if (ticketCountMap.getOrDefault(Type.INFANT, 0) < 0 ||
 				ticketCountMap.getOrDefault(Type.CHILD, 0) < 0 ||

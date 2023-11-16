@@ -4,6 +4,7 @@ import java.util.EnumMap;
 
 import thirdparty.paymentgateway.TicketPaymentService;
 import thirdparty.seatbooking.SeatReservationService;
+import uk.gov.dwp.uc.pairtest.common.CommonTicketService;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.Type;
 import uk.gov.dwp.uc.pairtest.validation.TicketValidationService;
@@ -12,11 +13,12 @@ import uk.gov.dwp.uc.pairtest.validation.TicketValidationService;
  * {@code TicketServiceImpl} provides the implementation of the {@code TicketService} interface.
  * It handles the purchase of tickets, including validation, calculation, payment, and seat reservation.
  */
-public class TicketServiceImpl extends BaseTicketService implements TicketService {
+public class TicketServiceImpl implements TicketService {
 
 	private final TicketPaymentService paymentService;
 	private final SeatReservationService reservationService;
 	private final TicketValidationService ticketValidationService;
+	private final CommonTicketService commonTicketService;
 
 	/**
 	 * Constructs a {@code TicketServiceImpl} with the specified dependencies.
@@ -25,10 +27,11 @@ public class TicketServiceImpl extends BaseTicketService implements TicketServic
 	 * @param reservationService     The service responsible for reserving seats.
 	 * @param ticketValidationService The service responsible for validating ticket requests.
 	 */
-	public TicketServiceImpl(TicketPaymentService paymentService, SeatReservationService reservationService, TicketValidationService ticketValidationService) {
+	public TicketServiceImpl(TicketPaymentService paymentService, SeatReservationService reservationService, TicketValidationService ticketValidationService, CommonTicketService commonTicketService) {
 		this.paymentService = paymentService;
 		this.reservationService = reservationService;
 		this.ticketValidationService = ticketValidationService;
+		this.commonTicketService = commonTicketService;
 	}
 
 	/**
@@ -43,14 +46,14 @@ public class TicketServiceImpl extends BaseTicketService implements TicketServic
 
 		ticketValidationService.preValidateTicketRequest(accountId, ticketTypeRequests);
 
-		calculateTicketCountForEachType(ticketCountMap, ticketTypeRequests);
+		commonTicketService.calculateTicketCountForEachType(ticketCountMap, ticketTypeRequests);
 
 		ticketValidationService.validateTicketRequest(accountId, ticketCountMap);
 
-		int totalAmountToPay = calculateTotalAmount(ticketCountMap);
+		int totalAmountToPay = commonTicketService.calculateTotalAmount(ticketCountMap);
 		paymentService.makePayment(accountId, totalAmountToPay);
 
-		int totalSeatsToAllocate = calculateTotalTicketCount(ticketCountMap) - ticketCountMap.get(Type.INFANT);
+		int totalSeatsToAllocate = commonTicketService.calculateTotalTicketCount(ticketCountMap) - ticketCountMap.get(Type.INFANT);
 		reservationService.reserveSeat(accountId, totalSeatsToAllocate);
 	}
 

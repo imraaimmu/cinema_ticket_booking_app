@@ -14,26 +14,26 @@ public class TicketConstants {
 	public static final int CHILD_TICKET_PRICE = 10;
 	public static final int INFANT_TICKET_PRICE = 0;
 
-	//ERROR MESSAGES STARTS HERE
+	//ERROR MESSAGE STARTS HERE
 	private static final String ERROR_MESSAGE_PREFIX = "Error : ";
 	public static final String CANNOT_BOOK_TICKET_FOR_INFANT_AND_CHILD_WITHOUT_ADULT =
-	        ERROR_MESSAGE_PREFIX + "Infants and Children should be accompanied by Adults";
+			ERROR_MESSAGE_PREFIX + "Infants and Children should be accompanied by Adults";
 
 	public static final String CANNOT_BOOK_TICKET_WITHOUT_ADULT =
-	        ERROR_MESSAGE_PREFIX + "Atleast 1 Adult required to book the ticket(s)";
+			ERROR_MESSAGE_PREFIX + "Atleast 1 Adult required to book the ticket(s)";
 
 	public static final String TOTAL_TICKET_COUNT_MORE_THAN_REQUIRED =
-	        ERROR_MESSAGE_PREFIX + "Cannot book more than %d tickets at a time";
+			ERROR_MESSAGE_PREFIX + "Cannot book more than %d tickets at a time";
 
 	public static final String TOTAL_TICKET_COUNT_LESS_THAN_REQUIRED =
-	        ERROR_MESSAGE_PREFIX + "Atleast 1 ticket is required to book";
+			ERROR_MESSAGE_PREFIX + "Atleast 1 ticket is required to book";
 
 	public static final String INVALID_REQUEST_OBJECT =
-	        ERROR_MESSAGE_PREFIX + "Invalid Ticket Request Object, add at least 1 ticket";
+			ERROR_MESSAGE_PREFIX + "Invalid Ticket Request Object, add at least 1 ticket";
 
 	public static final String INVALID_ACCOUNT_ID =
-	        ERROR_MESSAGE_PREFIX + "Invalid Account ID";
+			ERROR_MESSAGE_PREFIX + "Invalid Account ID";
 
 	public static final String INVALID_TICKET_COUNT = "Error: Invalid ticket count";
-	//ERROR MESSAGES END HERE
+	//ERROR MESSAGE ENDS HERE
 }
