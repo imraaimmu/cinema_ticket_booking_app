@@ -8,7 +8,7 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.Type;
 
 /**
- * BaseTicketService provides common functionality related to ticket calculations.
+ * CommonTicketServiceImpl provides common functionality related to ticket and seat calculations.
  */
 public class CommonTicketServiceImpl implements CommonTicketService{
 

@@ -5,6 +5,9 @@ import java.util.EnumMap;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.Type;
 
+/**
+ * CommonTicketService provides common functionality related to ticket and seat calculations.
+ */
 public interface CommonTicketService {
 
 	/**
