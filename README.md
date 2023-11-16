@@ -54,8 +54,10 @@ Follow these steps to set up and run the project locally:
 
     ```bash
     git clone https://github.com/imraaimmu/cinema_ticket_booking_app.git
-    cd cinema_ticket_booking_app
     ```
+   ```bash
+    cd cinema_ticket_booking_app
+   ```
 
 2. **Run Using Maven:**
 
