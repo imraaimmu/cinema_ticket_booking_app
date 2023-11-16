@@ -1,6 +1,11 @@
 package uk.gov.dwp.uc.pairtest.validation;
 
-import static uk.gov.dwp.uc.pairtest.constant.TicketConstants.*;
+import static uk.gov.dwp.uc.pairtest.constant.TicketConstants.CANNOT_BOOK_TICKET_FOR_INFANT_AND_CHILD_WITHOUT_ADULT;
+import static uk.gov.dwp.uc.pairtest.constant.TicketConstants.CANNOT_BOOK_TICKET_WITHOUT_ADULT;
+import static uk.gov.dwp.uc.pairtest.constant.TicketConstants.INVALID_ACCOUNT_ID;
+import static uk.gov.dwp.uc.pairtest.constant.TicketConstants.INVALID_REQUEST_OBJECT;
+import static uk.gov.dwp.uc.pairtest.constant.TicketConstants.TOTAL_TICKET_COUNT_LESS_THAN_REQUIRED;
+import static uk.gov.dwp.uc.pairtest.constant.TicketConstants.TOTAL_TICKET_COUNT_MORE_THAN_REQUIRED;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -12,8 +17,17 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest.Type;
 import uk.gov.dwp.uc.pairtest.util.TicketUtil;
 
+/**
+ * Implementation of {@link TicketValidationService} for validating ticket requests.
+ */
 public class TicketValidationServiceImpl extends BaseTicketService implements TicketValidationService {
 
+	/**
+	 * Pre-validates the ticket request.
+	 *
+	 * @param accountId          The ID of the account making the request.
+	 * @param ticketTypeRequests The ticket type requests to be pre-validated.
+	 */
 	public void preValidateTicketRequest(Long accountId, TicketTypeRequest... ticketTypeRequests) {
 
 		if(accountId == null  || accountId <= 0) {
@@ -28,6 +42,12 @@ public class TicketValidationServiceImpl extends BaseTicketService implements Ti
 
 	}
 
+	/**
+	 * Validates the ticket request based on the count map.
+	 *
+	 * @param accountId      The ID of the account making the request.
+	 * @param ticketCountMap The count map of ticket types.
+	 */
 	public void validateTicketRequest(Long accountId, EnumMap<Type, Integer> ticketCountMap) {
 
 		List<String> errorList = new ArrayList<>();
