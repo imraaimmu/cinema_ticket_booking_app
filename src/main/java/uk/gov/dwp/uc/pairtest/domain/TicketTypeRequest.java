@@ -25,9 +25,9 @@ public class TicketTypeRequest {
     }
 
     public enum Type {
-        ADULT(TicketConstants.ADULT_TICKET_PRICE), // Set the price for ADULT tickets
-        CHILD(TicketConstants.CHILD_TICKET_PRICE), // Set the price for CHILD tickets
-        INFANT(TicketConstants.INFANT_TICKET_PRICE); // Set the price for INFANT tickets
+        ADULT(TicketConstants.ADULT_TICKET_PRICE), // Sets the price for ADULT ticket
+        CHILD(TicketConstants.CHILD_TICKET_PRICE), // Sets the price for CHILD ticket
+        INFANT(TicketConstants.INFANT_TICKET_PRICE); // Sets the price for INFANT ticket
 
         private int price;
 
