@@ -1,6 +1,6 @@
 package uk.gov.dwp.uc.pairtest.domain;
 
-import uk.gov.dwp.uc.pairtest.contstant.TicketConstants;
+import uk.gov.dwp.uc.pairtest.constant.TicketConstants;
 
 /**
  * Immutable Object
@@ -8,8 +8,8 @@ import uk.gov.dwp.uc.pairtest.contstant.TicketConstants;
 
 public class TicketTypeRequest {
 
-    private int noOfTickets;//20
-    private Type type;//ADULT
+    private int noOfTickets;
+    private Type type;
 
     public TicketTypeRequest(Type type, int noOfTickets) {
         this.type = type;
